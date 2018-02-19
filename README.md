@@ -2,16 +2,16 @@
 ## Search Engine Project
 ### Part 1: Pre-Processing Documents & Building Inverted Index
 
-This programs pro-processes and tokenizes a TREC benchmark dataset as the first step of building an an efficient and scalable information retrieval system and search engine. This engine includes a single term index, positional index of single terms, phrase index, and stem index. 
+This programs pre-processes and tokenizes a TREC benchmark dataset as the first step of building an information retrieval system and search engine. After pre-processing, this engine can build a single term index, positional index of single terms, phrase index, and stem index. 
 
-The program has a shell interface that accepts arguments in the following format:
+This engine has a shell interface that accepts arguments in the following format:
 
 `python3 build.py [trec-files-directory-path] [index-type] [output-dir]`
 
-* Example command: `python3 build.py data/ positional output/`
 * `[trec-files-directory-path]`  is the directory containing the raw documents
 * `[index-type]`  can be one of the following: `single`,  `stem`,  `phrase`, `positional`
 * `[output-dir]` is the directory where index and lexicon files will be written
+* Example command: `python3 build.py data/ positional output/`
 
 ### Parser/Tokenizer Requirements
 * Identifies each token – this is each single term that can be a word, a number, etc. Each token is identified as the one separated from the other token by a space, period, symbols (^,*,#,@, $…). These symbols are not stored. 
@@ -20,7 +20,7 @@ The program has a shell interface that accepts arguments in the following format
 * Identifies two and three word phrases for the phrase index
 * Uses the Porter stemmer algorthim to stem the terms for the lexicon of the stem index
 
-### Index-builder Requirements:
+### Index-builder Requirements
 * Create several indexes:
     - Single term index - do not include stop terms
     - Single term (including stop terms) positional index
