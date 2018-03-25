@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-import preprocess 
+import preprocess_query as preprocess
 import query as query_static
 import os
 import sys

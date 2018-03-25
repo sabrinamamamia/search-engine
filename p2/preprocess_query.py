@@ -180,7 +180,7 @@ def findSpecialTokens(query, stops):
 
 def loadStops():
 	"""Load stop words"""
-	with open("stops.txt") as f:
+	with open("data/stops.txt") as f:
 		stops = f.readlines()
 	stops = set([x.strip() for x in stops])
 	return stops
