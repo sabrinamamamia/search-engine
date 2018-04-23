@@ -2,9 +2,10 @@
 ## Search Engine Project
 
 This search engine has the following functionalities:
-* Preprocesses and tokenizes a 1700-document TREC benchmark dataset
+* Preprocesses and tokenizes a 2000-document TREC benchmark dataset
 * Builds 4 types of inverted indexes and matrices (single, stem, positional, and phrase) 
-* Clusters documents using an unsupervised machine learning algorithm (K-Means)* Applies 3 retrieval models (Vector Space Model, BM25, Query Likelihood with Smoothing) and performs relevance ranking 
+* Clusters documents using an unsupervised machine learning algorithm (K-Means)
+* Applies 3 retrieval models (Vector Space Model, BM25, Query Likelihood with Smoothing) and performs relevance ranking 
 
 ### Building The Index
 `python3 build.py [trec-files-directory-path] [index-type] [output-dir]`
