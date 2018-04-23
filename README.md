@@ -1,14 +1,10 @@
 ## COSC 488 - Information Retrieval 
 ## Search Engine Project
 
-This programs pre-processes and tokenizes a TREC benchmark dataset as the first step of building an information retrieval system and search engine. After pre-processing, this engine can build a single term index, positional index of single terms, phrase index, and stem index. Then, it applies three different retrieval strategies/models and similarity measures to perform relevance ranking. The following models are used: 
-* Vector Space Model using Cosine measure (tf-idf normalized for document length)
-* Probabilistic model: BM25
-* Language model: Query Likelihood with Dirichlet Smoothing 
-
-To evaluate the performance, Mini-Trec created from the TREC benchmark data provided by NIST, along with Trec title queries. The qrels file has “presumably” the relevant documents to each of the queries in the query file. 
-
-This engine has a shell interface that accepts arguments in the following format:
+This search engine has the following functionalities:
+* Preprocesses and tokenizes a 1700-document TREC benchmark dataset
+* Builds 4 types of inverted indexes and matrices (single, stem, positional, and phrase) 
+* Clusters documents using an unsupervised machine learning algorithm (K-Means)* Applies 3 retrieval models (Vector Space Model, BM25, Query Likelihood with Smoothing) and performs relevance ranking 
 
 ### Building The Index
 `python3 build.py [trec-files-directory-path] [index-type] [output-dir]`
@@ -35,6 +31,21 @@ This engine has a shell interface that accepts arguments in the following format
 * `[query-file-path]` path to the query file
 * `[results-file]` is the path to the results file, this file will be run with trec_eval to get the performance of your system. 
 * Ex: `python3 query_dynamic.py ./indexes/ ./data/queryfile.txt ./results/results-dynamic.txt`
+
+### Building the Document-Term Matrix and Query Matrix 
+`python3 preprocess.py [input-directory-path] [results-directory] [num-dimensions]`
+* Example: python3 preprocess.py data data 1000
+* `[input-data-path]` is directory with the inverted index
+* `[results-directory]` is the directory where the matrix files will go
+* `[num-dimensions]` is the number of dimensions the vectors will have 
+NOTE: I only used single term inverted index for this part of the project. However, this system can easily be scaled out to use other inverted indexes. 
+
+### Clustering
+`python3 cluster.py [input-directory-path] [results-directory-path] [K]`
+* Example: python3 cluster.py data results 10
+* `[input-data-path]` is directory with the inverted index
+* `[results-directory]` is the directory where the matrix files will go
+* `[K]` is the number of clusters
 
 ### Parser/Tokenizer Requirements
 * Identifies each token – this is each single term that can be a word, a number, etc. Each token is identified as the one separated from the other token by a space, period, symbols (^,*,#,@, $…). These symbols are not stored. 
